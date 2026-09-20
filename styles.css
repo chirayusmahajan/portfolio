@@ -596,38 +596,60 @@ body.light h2 em {
 .section-heading .eyebrow {
   margin-bottom: 12px;
 }
+.timeline-groups {
+  display: block;
+}
+.timeline-group {
+  min-width: 0;
+}
+.timeline-group-header {
+  margin-bottom: 20px;
+}
+.timeline-group-header .eyebrow {
+  margin: 0;
+}
 .timeline {
   position: relative;
-  padding-left: 156px;
+  max-width: 860px;
+  padding-left: 0;
 }
 .timeline:before {
   content: "";
   position: absolute;
-  left: 64px;
-  top: 8px;
-  bottom: 8px;
+  left: 145px;
+  top: 13px;
+  bottom: 13px;
   width: 1px;
-  background: var(--line);
+  background: linear-gradient(
+    var(--blue),
+    var(--line) 13%,
+    var(--line) 88%,
+    transparent
+  );
 }
 .timeline-item {
   position: relative;
   display: grid;
-  grid-template-columns: 0 1fr;
-  margin-bottom: 17px;
+  grid-template-columns: 130px 30px minmax(0, 1fr);
+  align-items: start;
+  margin-bottom: 18px;
 }
 .timeline-date {
-  position: absolute;
-  left: -156px;
-  top: 24px;
-  width: 126px;
+  position: relative;
+  left: auto;
+  top: auto;
+  grid-column: 1;
+  width: auto;
+  padding: 24px 24px 0 0;
   color: var(--muted);
   font: 12px var(--mono);
   text-align: right;
+  white-space: nowrap;
 }
 .timeline-date i {
   position: absolute;
-  right: -35px;
-  top: 4px;
+  right: -20px;
+  top: 27px;
   width: 10px;
   height: 10px;
   background: var(--bg);
@@ -636,6 +658,7 @@ body.light h2 em {
   z-index: 1;
 }
 .timeline-card {
+  grid-column: 3;
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--surface) 62%, transparent);
   border-radius: 10px;
@@ -1629,44 +1652,6 @@ kbd {
   }
 }
 
-/* Experience timeline: an explicit grid keeps years, spine, dots, and cards aligned. */
-.timeline {
-  padding-left: 0;
-}
-.timeline:before {
-  left: 145px;
-  top: 13px;
-  bottom: 13px;
-  background: linear-gradient(
-    var(--blue),
-    var(--line) 13%,
-    var(--line) 88%,
-    transparent
-  );
-}
-.timeline-item {
-  display: grid;
-  grid-template-columns: 130px 30px minmax(0, 1fr);
-  align-items: start;
-  margin-bottom: 18px;
-}
-.timeline-date {
-  position: relative;
-  left: auto;
-  top: auto;
-  grid-column: 1;
-  width: auto;
-  padding: 24px 24px 0 0;
-  text-align: right;
-  white-space: nowrap;
-}
-.timeline-date i {
-  right: -20px;
-  top: 27px;
-}
-.timeline-card {
-  grid-column: 3;
-}
 @media (max-width: 760px) {
   .timeline {
     padding-left: 53px;

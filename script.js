@@ -7,6 +7,17 @@ const menuButton = document.querySelector(".menu-button");
 const navLinks = document.querySelector(".nav-links");
 const dialog = document.querySelector(".command-dialog");
 const dialogInput = dialog.querySelector("input");
+const brandImages = document.querySelectorAll(".brand-image");
+
+function syncBrandImages() {
+  const isLightMode = body.classList.contains("light");
+  brandImages.forEach((image) => {
+    const nextSrc = isLightMode
+      ? image.dataset.lightSrc
+      : image.dataset.darkSrc;
+    if (nextSrc) image.src = nextSrc;
+  });
+}
 
 function setTheme(theme) {
   body.classList.toggle("light", theme === "light");
@@ -17,6 +28,7 @@ function setTheme(theme) {
   );
   document.querySelector('meta[name="theme-color"]').content =
     theme === "light" ? "#f7f9fc" : "#0b1020";
+  syncBrandImages();
   localStorage.setItem("portfolio-theme", theme);
 }
 setTheme(localStorage.getItem("portfolio-theme") || "light");
